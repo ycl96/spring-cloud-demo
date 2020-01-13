@@ -1,11 +1,17 @@
-
+server:
+  address: 0.0.0.0
+  port: 7001
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8002/eureka/
 
 mybatis:
   type-aliases-package: com.ycl.entities       #所以entity别名类所在路径
 
 spring:
   application:
-    name: springcloud-user
+    name: service-product-application
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource                   #当前数据源操作类型
     driver-class-name: com.mysql.cj.jdbc.Driver                    #mysql驱动包
@@ -17,6 +23,4 @@ spring:
       initial-size: 5                                               #初始化连接数
       max-total: 5                                                  #最大连接数
       max-wait-millis: 200                                          #等待连接获取的最大超时时间
-server:
-  address: 0.0.0.0
-  port: 7001
+
