@@ -37,4 +37,58 @@ public class User implements Serializable {
      * 密码
      */
     private String pwd;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public User setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public User setUserName(String userName) {
+        this.userName = userName;
+        return this;
+    }
+
+    public String getDbSource() {
+        return dbSource;
+    }
+
+    public User setDbSource(String dbSource) {
+        this.dbSource = dbSource;
+        return this;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public User setPhone(String phone) {
+        this.phone = phone;
+        return this;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public User setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public User setPwd(String pwd) {
+        this.pwd = pwd;
+        return this;
+    }
 }
