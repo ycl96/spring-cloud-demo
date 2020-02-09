@@ -1,1 +1,6 @@
 .idea/
+./common-sdk/target/
+./eureka8001/target/
+./eureka8002/target/
+./serviceconsumer7002/target/
+./serviceproduct7001/target/

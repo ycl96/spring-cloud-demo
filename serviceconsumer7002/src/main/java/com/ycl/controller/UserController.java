@@ -1,12 +1,11 @@
 package com.ycl.controller;
 
 import com.ycl.entites.User;
+import com.ycl.model.InputOutputData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
@@ -45,4 +44,19 @@ public class UserController {
     public ResponseEntity<User> getUserById(@PathVariable("id") Long id) {
         return restTemplate.getForEntity(url.concat("user/").concat(id.toString()), User.class);
     }
+
+    @GetMapping(value = "/test")
+    @ResponseBody
+    public InputOutputData.Output test(){
+        // 反序列化后
+//        System.out.println(input.getName());
+//        System.out.println(input.getAge());
+
+        // 输出
+        InputOutputData.Output.Builder outBuilder = InputOutputData.Output.newBuilder();
+        outBuilder.setResult("老大回来了");
+
+        return outBuilder.build();
+    }
+
 }

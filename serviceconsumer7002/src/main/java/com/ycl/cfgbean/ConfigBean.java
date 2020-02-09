@@ -2,6 +2,7 @@ package com.ycl.cfgbean;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -17,5 +18,10 @@ public class ConfigBean {
     @Bean
     public RestTemplate getRestTemplate(){
         return new RestTemplate();
+    }
+
+    @Bean
+    public ProtobufHttpMessageConverter protobufHttpMessageConverter(){
+        return new ProtobufHttpMessageConverter();
     }
 }
