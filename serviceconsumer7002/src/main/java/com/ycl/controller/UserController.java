@@ -38,11 +38,24 @@ public class UserController {
     @Autowired
     private LoadBalancerClient loadBalancerClient; // ribbon 负载均衡器
 
+    private static String SERVICE_NAME_PRODUCT = "service-product-application";
+
+    /**
+     * @author     : YangChunLong
+     * @date       : Created in 2020/9/18 00:13
+     * @description: 根据eureka 中注册的服务名，获取其主机名（域名），用于服务之间的调用（方法一）
+     * 方法二： 通过初始化RestTemplate的实例对象时 加入注解：@LoadBalanced, 即可采用 restTemplate.getForObject("http://{service_name}:{port}/"的方式调用
+     * @modified By:
+     * @Param:
+     * @return     : java.lang.String
+     */
     private String getUrl_pre (){
-        ServiceInstance productService = loadBalancerClient.choose("service-product-application");
+        ServiceInstance productService = loadBalancerClient.choose(SERVICE_NAME_PRODUCT);
         String url_pre = "http://" + productService.getHost() + ":" + productService.getPort() + "/product";
         return url_pre;
     }
+
+
     @RequestMapping(value = "/user/all")
     @ResponseBody
     public List getUserAll() {
@@ -54,6 +67,7 @@ public class UserController {
     @ResponseBody
     public ResponseEntity<User> getUserById(@PathVariable("id") Long id) {
         String url = getUrl_pre() + "/user/" + id.toString();
+        url = String.format("http://%s/user/"+id,SERVICE_NAME_PRODUCT);
         return restTemplate.getForEntity(url, User.class);
     }
 
