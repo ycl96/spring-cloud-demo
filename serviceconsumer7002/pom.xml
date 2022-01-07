@@ -12,7 +12,7 @@
     <artifactId>serviceconsumer7002</artifactId>
 
     <properties>
-        <protobuf.version>3.7.0</protobuf.version>
+        <protobuf.version>3.16.1</protobuf.version>
         <grpc.version>1.16.1</grpc.version>
     </properties>
     <dependencies>
